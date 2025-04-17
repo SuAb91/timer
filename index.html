@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Countdown Timer</title>
+  <title>Big Bold Countdown</title>
   <style>
     html, body {
       height: 100%;
@@ -18,13 +18,15 @@
 
     .countdown {
       text-align: center;
-      font-size: 6vw;
+      font-weight: bold;
+      font-size: 12vh; /* Big and responsive */
       padding: 20px;
+      line-height: 1.2;
     }
 
-    @media (orientation: landscape) and (max-height: 768px) {
+    @media (orientation: landscape) {
       .countdown {
-        font-size: 8vw;
+        font-size: 15vh; /* Even larger in landscape */
       }
     }
   </style>
@@ -35,8 +37,7 @@
   </div>
 
   <script>
-    // Set your target date and time here (format: 'YYYY-MM-DDTHH:MM:SS')
-    const targetDate = new Date("2025-05-03T18:00:00").getTime();
+    const targetDate = new Date("2025-12-31T23:59:59").getTime();
 
     function updateCountdown() {
       const now = new Date().getTime();
@@ -56,7 +57,6 @@
         `${days}d ${hours}h ${minutes}m ${seconds}s`;
     }
 
-    // Initial call and update every second
     updateCountdown();
     setInterval(updateCountdown, 1000);
   </script>
