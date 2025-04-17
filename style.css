@@ -1,0 +1,48 @@
+.discount-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 5px 0;
+    background: radial-gradient(circle 610px at 5.2% 51%, rgb(255, 153, 153) 20%, rgb(255, 51, 51) 50%, rgb(179, 20, 20) 80%);
+    color: #fff;
+    font-family: "Inter", sans-serif;
+}
+
+.discount-container .info {
+    display: flex;
+    gap: 10px;
+}
+
+.discount-heading, .discount-subheading {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.countdown-timer {
+    display: flex;
+    gap: 16px;
+}
+
+.group .value {
+    background: #fff;
+    color: #222;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 4px;
+    width: 24px;
+    text-align: center;
+    border-radius: 4px;
+}
+
+.close-btn {
+    position: fixed;
+    top: 5px;
+    right: 20px;
+    cursor: pointer;
+    font-size: 25px;
+}
