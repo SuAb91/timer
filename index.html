@@ -1,42 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Countdown Timer</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" integrity="sha512-dPXYcDub/aeb08c63jRq/k6GaKccl256JQy/AnOq7CAnEZ9FzSL9wSbcZkMp4R26vBsMLFYH4kQ67/bbV8XaCQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Countdown Timer</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      background-color: black;
+      color: red;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Courier New', monospace;
+    }
+
+    .countdown {
+      text-align: center;
+      font-size: 6vw;
+      padding: 20px;
+    }
+
+    @media (orientation: landscape) and (max-height: 768px) {
+      .countdown {
+        font-size: 8vw;
+      }
+    }
+  </style>
 </head>
 <body>
-    <div class="discount-container">
-        <div class="info">
-            <div class="discount-heading">DEAL OF THE MONTH:</div>
-            <div class="discount-subheading">GET 30% OFF</div>
-        </div>
+  <div class="countdown" id="countdown">
+    Loading...
+  </div>
 
-        <div class="countdown-timer">
-            <div class="group">
-                <div class="value days">00</div>
-                <div class="unit">Days</div>
-            </div>
-            <div class="group">
-                <div class="value hours">00</div>
-                <div class="unit">Hrs</div>
-            </div>
-            <div class="group">
-                <div class="value minutes">00</div>
-                <div class="unit">Min</div>
-            </div>
-            <div class="group">
-                <div class="value seconds">00</div>
-                <div class="unit">Sec</div>
-            </div>
-            <div class="close-btn">
-                <i class="bi bi-x-circle"></i>
-            </div>
-        </div>
-    </div>
-    <script src="script.js"></script>
+  <script>
+    // Set your target date and time here (format: 'YYYY-MM-DDTHH:MM:SS')
+    const targetDate = new Date("2025-05-03T18:00:00").getTime();
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance <= 0) {
+        document.getElementById("countdown").innerHTML = "Countdown Over!";
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    // Initial call and update every second
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
+  </script>
 </body>
 </html>
